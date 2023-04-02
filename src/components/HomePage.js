@@ -15,6 +15,10 @@ export default function HomePage() {
     freeTime:"",
     value:"",
   });
+  const [cab,setCab]= useState({
+    label:"",
+    value:"",
+  });
   const getInitialState = () => {
     const value = 1;
     return value;
@@ -38,6 +42,17 @@ export default function HomePage() {
   const places = [{value:'A',label: "1. Manali"},{value:'B',label: "2. Jalandhar"},{value:'C',label: "3. Dehradun"},{value:'D',label: "4. Jaipur"},{value:'E',label: "5. Agra"},{value:'F',label: "6. Kota"}];
   let [options, setOptions] = useState([{value:-1,label: "Select a cab"},{value:5,label: "Ultra-Luxury"},{value:4,label: "Luxury"},{value:3,label: "SUV"},{value:2,label: "Sedan"},{value:1,label: "Micro-Car"}]) ;
   // let bookedCabs = [];
+  // options.map((option)=>{
+  //   cab.label=option.label;
+  //   cab.value=option.value;
+  //   fireDb.child("cabs").push(cab,(err)=>{
+  //   if(err){
+  //     toast.error("Not confirmed, try again");
+  //   }else{
+  //     // alert(" ");
+  //   }
+  // }); 
+  // });
   const [email, setEmail] = useState('');
   const [flag, setUpdated] = useState(false);
   const [routee, setUpdatedd] = useState(false);
@@ -208,7 +223,9 @@ let findShortestPath = (graph, startNode, endNode) => {
 const distance=findShortestPath(graph,pickup,drop).distance;
 const total=(distance*valuee);
 const taxes=(total*18)/100;
-
+const myTimer=(value,label)=>{
+  options[6-value].value=6-options.findIndex(x => x.label === label);
+}
 //sending booking details to our firebase database
 const submitBooking = async(event) =>{
   event.preventDefault();
@@ -227,6 +244,7 @@ const submitBooking = async(event) =>{
   }
   options[6-valuee].value=0;
   setOptions(options);
+  // setTimeout(myTimer(valuee,bookedCab.label), distance*60000);
   setBoth(false);
   const date = new Date();
     bookedCab.bookingTime=date.getHours() 
@@ -259,6 +277,22 @@ useEffect(()=>{
   });
   return ()=>{
     setData({});
+  };
+},[]);
+
+//get cab details
+let [cabs,setCabs] =useState([]);
+
+useEffect(()=>{
+  fireDb.child("cabs").on("value",(snapshot)=>{
+    if(snapshot.val()!==null){
+      setCabs({...snapshot.val()});
+    }else{
+      setCabs({});
+    }
+  });
+  return ()=>{
+    setCabs({});
   };
 },[]);
 const onDelete= (id)=>{
@@ -321,6 +355,13 @@ const onDelete= (id)=>{
             {option.value===-1 && <p>{option.label}</p>}
           </option>
         ))}
+        {/* {Object.keys(cabs).map((cab)=>(
+          <option value= {cabs[cab].value}>
+          {cabs[cab].value>0 && <p>{cabs[cab].label} - ${cabs[cab].value} per min</p>}
+          {cabs[cab].value===0 && <p>{cabs[cab].label} - Booked</p>}
+          {cabs[cab].value===-1 && <p>{cabs[cab].label}</p>}
+        </option>
+        ))} */}
       </select>
       </div>
       <div className='buttons'>
