@@ -33,6 +33,9 @@ REFER to line no. 257 in HomePage.js
 Also I've set the value of the cab in the options array to be 0 to filter it out while booking another cab and show it as booked.
 
 <img width="737" alt="Screenshot 2023-04-02 at 8 00 26 PM" src="https://user-images.githubusercontent.com/79107244/229359302-137595be-b39b-4629-b1b6-bc5eb4ad6b37.png">
+The cabs that are already chosen by the user are shown as booked and so not available to choose from.
+
+<img width="546" alt="Screenshot 2023-04-02 at 10 08 02 PM" src="https://user-images.githubusercontent.com/79107244/229366574-eb807f2d-5c7b-4ec5-9686-4d8a3786dd1f.png">
 
 The user can also delete their booking by clicking on the delete button with the bookings.Then the cab will be again available to be booked.
 
