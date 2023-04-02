@@ -18,6 +18,9 @@ To calculate the cost for the trip, the fare of the cab per minute is multiplied
 This is calculated using the Dijkstra's algorithm for calculating shortest path between two nodes of a graph- 
 REFER to lines no. 130-221 in HomePage.js file for code
 
+<img width="534" alt="Screenshot 2023-04-03 at 12 47 57 AM" src="https://user-images.githubusercontent.com/79107244/229374621-f87c5c09-8513-47da-bd6a-29882d1b1592.png">
+
+
 On confirmation, a confirmation mail is sent to the user email by using the SMTP protocol with elastic mail as host.
 REFER to lines no. 232-244 of HomePage.js file for code
 
