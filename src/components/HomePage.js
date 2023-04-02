@@ -39,7 +39,7 @@ export default function HomePage() {
   const handleChange2 = (e) => {
     setDrop(e.target.value);
   };
-  // const places = [{value:'A',label: "1. Manali"},{value:'B',label: "2. Jalandhar"},{value:'C',label: "3. Dehradun"},{value:'D',label: "4. Jaipur"},{value:'E',label: "5. Agra"},{value:'F',label: "6. Kota"}];
+  const places = [{value:'A',label: "1. Manali"},{value:'B',label: "2. Jalandhar"},{value:'C',label: "3. Dehradun"},{value:'D',label: "4. Jaipur"},{value:'E',label: "5. Agra"},{value:'F',label: "6. Kota"}];
   let [options, setOptions] = useState([{value:-1,label: "Select a cab"},{value:5,label: "Ultra-Luxury"},{value:4,label: "Luxury"},{value:3,label: "SUV"},{value:2,label: "Sedan"},{value:1,label: "Micro-Car"}]) ;
 
   // places.map((option)=>{
@@ -221,6 +221,7 @@ let findShortestPath = (graph, startNode, endNode) => {
  };
 // console.log(findShortestPath(graph,pickup,drop).distance);
 const distance=findShortestPath(graph,pickup,drop).distance;
+const pathh=findShortestPath(graph,pickup,drop).path;
 const total=(distance*valuee);
 const taxes=(total*18)/100;
 const myTimer=(value,label)=>{
@@ -403,6 +404,12 @@ const onDelete= (id)=>{
     {both && flag &&  <div className='inputDiv'>
      <div className='details'>
     <h2 className='heading'>Checkout</h2>
+     <div className='checkout'>
+        <p className='p1'>Route : </p>
+      {pathh.map((pth)=>(
+        <p> ~~ {places[places.findIndex(x => x.value === pth)].label} </p>
+      ))}
+      </div>
      <div className='checkout'>
      <p className='p1'>User Email : </p>
      <p>{email}</p>
