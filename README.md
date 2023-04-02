@@ -1,4 +1,4 @@
-# Deployed Site- https://cabookcabservicess.netlify.app/
+# Deployed Site- https://cabook-instantcabservices.netlify.app/
 
 Assignment Submission for Scaler SDE Intern Full-Stack Assignment - Cab System
 Frontend is build in React JS with backend using Firebase
@@ -14,7 +14,7 @@ You can choose the pick-up and drop from the locations available with no predefi
 
 The site gives you the sumary of the trip with estimated cost for the trip inclusive of taxes. 
 To calculate the cost for the trip, the fare of the cab per minute is multiplied with the shortest time it will take to reach from pickup to destination.
-This is calculated using the following algorithm - 
+This is calculated using the Dijkstra's algorithm for calculating shortest path between two nodes of a graph- 
 REFER to lines no. 130-221 in HomePage.js file for code
 
 On confirmation, a confirmation mail is sent to the user email by using the SMTP protocol with elastic mail as host.
@@ -38,7 +38,6 @@ The user can also delete their booking by clicking on the delete button with the
 
 <img width="1440" alt="Screenshot 2023-04-02 at 6 19 43 PM" src="https://user-images.githubusercontent.com/79107244/229355665-157c0632-acaa-47bf-a1eb-42924263fffb.png">
 
-The cabs will automatically be available after their trips which is implemented by timeout function as distances were given in minutes.
 The user can also book another cab from the other four options if one is already booked by them.
 
 The website is also made responsive using basic media queries.
