@@ -1,7 +1,8 @@
 # Deployed Site- https://cabook-instantcabservices.netlify.app/
 
 Assignment Submission for Scaler SDE Intern Full-Stack Assignment - Cab System
-Frontend is build in React JS with backend using Firebase
+
+Frontend is build in React JS and for backend I've used Firebase.
 The website is deployed using netlify.
 
 Project Description- 
