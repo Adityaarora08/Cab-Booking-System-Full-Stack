@@ -39,13 +39,13 @@ export default function HomePage() {
   const handleChange2 = (e) => {
     setDrop(e.target.value);
   };
-  const places = [{value:'A',label: "1. Manali"},{value:'B',label: "2. Jalandhar"},{value:'C',label: "3. Dehradun"},{value:'D',label: "4. Jaipur"},{value:'E',label: "5. Agra"},{value:'F',label: "6. Kota"}];
+  // const places = [{value:'A',label: "1. Manali"},{value:'B',label: "2. Jalandhar"},{value:'C',label: "3. Dehradun"},{value:'D',label: "4. Jaipur"},{value:'E',label: "5. Agra"},{value:'F',label: "6. Kota"}];
   let [options, setOptions] = useState([{value:-1,label: "Select a cab"},{value:5,label: "Ultra-Luxury"},{value:4,label: "Luxury"},{value:3,label: "SUV"},{value:2,label: "Sedan"},{value:1,label: "Micro-Car"}]) ;
-  // let bookedCabs = [];
-  // options.map((option)=>{
+
+  // places.map((option)=>{
   //   cab.label=option.label;
   //   cab.value=option.value;
-  //   fireDb.child("cabs").push(cab,(err)=>{
+  //   fireDb.child("places").push(cab,(err)=>{
   //   if(err){
   //     toast.error("Not confirmed, try again");
   //   }else{
@@ -295,6 +295,22 @@ useEffect(()=>{
     setCabs({});
   };
 },[]);
+//get places database
+let [placess,setPlacess] =useState([]);
+
+useEffect(()=>{
+  fireDb.child("places").on("value",(snapshot)=>{
+    if(snapshot.val()!==null){
+      setPlacess({...snapshot.val()});
+    }else{
+      setPlacess({});
+    }
+  });
+  return ()=>{
+    setPlacess({});
+  };
+},[]);
+
 const onDelete= (id)=>{
   if(window.confirm("Are you sure you want to delete the booking ? ")){
     fireDb.child(`bookings/${id}`).remove((err)=>{
@@ -328,20 +344,30 @@ const onDelete= (id)=>{
       <div className='in1'>
       <p>Select pick-up :</p>
       <select value={pickup} onChange={handleChange1}>
-        {places.map((option)=>(
+        {/* {places.map((option)=>(
           <option value= {option.value}>
             <p>{option.label}</p>
           </option>
+        ))} */}
+        {Object.keys(placess).map((place)=>(
+         <option value= {placess[place].value}>
+         <p>{placess[place].label}</p>
+       </option>
         ))}
       </select>
       </div>
      <div className='in1'>
      <p>Select destination :</p>
       <select value={drop} onChange={handleChange2}>
-        {places.map((place)=>(
+        {/* {places.map((place)=>(
           <option value= {place.value}>
             <p>{place.label}</p>
           </option>
+        ))} */}
+        {Object.keys(placess).map((place)=>(
+         <option value= {placess[place].value}>
+         <p>{placess[place].label}</p>
+       </option>
         ))}
       </select>
      </div>
@@ -411,7 +437,7 @@ const onDelete= (id)=>{
      </div> }
 
      {!both && <div className='booked'>
-      <p className='bookHead'>Your booked Cabs</p>
+      <p className='bookHead'>Booked Cabs</p>
       {Object.keys(data).map((cab)=>(
   <div className='bookings'>
     <p className='booke'>Cab : {data[cab].label}</p><p>Booking Time : {data[cab].bookingTime}</p>
