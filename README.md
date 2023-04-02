@@ -114,49 +114,19 @@ const taxes=(total*18)/100;
 On confirmation, a confirmation mail is sent to the user email by using the SMTP protocol with elastic mail as host.
 <img width="1113" alt="Screenshot 2023-04-02 at 6 20 31 PM" src="https://user-images.githubusercontent.com/79107244/229355691-9bbef6da-94ce-4641-b546-b18c8a2f515f.png">
 
-```
- const config = {
-    Username: 'cabookcabservices@gmail.com',
-    Password: '803B33D28D91A8CBCFE5E90A0D2AAB5063FE',
-    Host: 'smtp.elasticemail.com',
-    Port: 2525,
-    To : `${email}`,
-    From : "cabookcabservices@gmail.com",
-    Subject : "Ride Confirmed ! We are very excited to ride with you !",
-    Body : `Thankyou for using Cabook. Trip confirmed .\nEstimated time taken for the trip: ${distance}minutes.\nAmount to be paid: $ ${total+taxes}.\n Happy journey !`
-  }
-  if(window.Email){
-    window.Email.send(config).then(()=> toast.success("Confirmation and details sent on mail(check spam folder if not recieved) :)") );
-  }
-```
+<img width="1075" alt="Screenshot 2023-04-02 at 8 02 01 PM" src="https://user-images.githubusercontent.com/79107244/229359386-0a318989-f2b4-430c-a16c-4214cc4cfe3b.png">
+
 
 Then the booking details are also sent to the firebase realtime database which are to be printed in the bookings screen. 
 <img width="1440" alt="Screenshot 2023-04-02 at 6 50 15 PM" src="https://user-images.githubusercontent.com/79107244/229355562-0e53627a-6c35-45bd-af48-76014f27dc8d.png">
 Also I've set the value of the cab in the options array to be 0 to filter it out while booking another cab and show it as booked.
 
-```
- options[6-valuee].value=0;
-  setOptions(options);
-  setBoth(false);
-  const date = new Date();
-    bookedCab.bookingTime=date.getHours() 
-    + ':' + date.getMinutes() 
-    + ":" + date.getSeconds();
-    bookedCab.freeTime=distance;
-  const {amount,label,bookingTime,freeTime,value} = bookedCab;
-  bookedCab.value=valuee;
-  //add to database
-  fireDb.child("bookings").push(bookedCab,(err)=>{
-    if(err){
-      toast.error("Not confirmed, try again");
-    }else{
-      toast.success("Booking successful !")
-      // alert(" ");
-    }
-  }); 
-```
+<img width="737" alt="Screenshot 2023-04-02 at 8 00 26 PM" src="https://user-images.githubusercontent.com/79107244/229359302-137595be-b39b-4629-b1b6-bc5eb4ad6b37.png">
+
 The user can also delete their booking by clicking on the delete button with the bookings.Then the cab will be again available to be booked.
+
 <img width="1440" alt="Screenshot 2023-04-02 at 6 19 43 PM" src="https://user-images.githubusercontent.com/79107244/229355665-157c0632-acaa-47bf-a1eb-42924263fffb.png">
+
 The cabs will automatically be available after their trips which is implemented by timeout function as distances were given in minutes.
 The user can also book another cab from the other four options if one is already booked by them.
 
