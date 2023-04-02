@@ -43,7 +43,7 @@ The user can also delete their booking by clicking on the delete button with the
 
 The user can also book another cab from the other four options if one is already booked by them.
 
-The website is also made responsive using basic media queries.
+The website is also made responsive using basic media queries.So it is compatible for phone as well as desktop screens (i.e. compatible for all screen sizes)
 
 <img width="1440" alt="Screenshot 2023-04-02 at 10 04 55 PM" src="https://user-images.githubusercontent.com/79107244/229366368-f5ea744d-bca0-4ee3-aa7d-d469f1e6294e.png">
 
