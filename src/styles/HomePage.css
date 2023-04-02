@@ -1,0 +1,424 @@
+.mainDiv{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+.inputDiv{
+    /* background-color: aliceblue; */
+    /* background-color: linear-gradient(to right, rgb(253, 184, 184) , rgb(255, 255, 233)); */
+    width: 30vw;
+    height: fit-content;
+    border-radius: 20px;
+    
+    padding: 5vh;
+    padding-top: 0;
+    padding-bottom: 1vh;
+    /* display: flex; */
+    align-items: baseline;
+    justify-content: center;
+    box-shadow: 1px 2px 9px black;
+    margin-top: 20vh;
+    position: absolute;
+}
+.buttons{
+    display: flex;
+
+}
+.butt1{
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    /* margin-left: 25vw; */
+    box-shadow: 1px 1px 5px black;
+    font-weight: 900;
+}
+.butt3{
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    /* margin-left: -4vw; */
+    box-shadow: 1px 1px 5px black;
+    font-weight: 900;
+}
+.butt2{
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    /* margin-right: 25vw; */
+    margin-right: auto;
+    box-shadow: 1px 1px 5px black;
+    font-weight: 900;
+}
+.butt1:hover{
+    background-color: rgb(123, 123, 123);
+    color: white;
+}
+.butt2:hover{
+    background-color: rgb(123, 123, 123);
+    color: white;
+}
+.butt3:hover{
+    background-color: rgb(33, 239, 167);
+    color: rgb(0, 0, 0);
+}
+.heading{
+    font-weight: 800;
+    text-align: center;
+    margin-top: 5vh;
+    position: relative;
+}
+.in1{
+    display: flex;
+    margin-bottom: 5px;
+}
+.checkout{
+    display: flex;
+    margin-bottom: 5px;
+    /* width: fit-content; */
+    /* block-size: fit-content; */
+    overflow: scroll;
+}
+.p1{
+    margin-right: auto;
+    overflow: scroll;
+}
+.checkout p{
+    font-size: large;
+    font-weight: 600;
+    overflow: scroll;
+}
+.in1 p{
+    font-size: large;
+    margin-right: auto;
+    font-weight: 600;
+}
+.in1 input{
+    font-size: larger;
+    border: 0;
+    background-color:aliceblue;
+    border-bottom: 3px solid black;
+    text-align: center;
+    padding: 0;
+
+}
+.in1 select{
+    font-size: 2vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    border-radius: 10px;
+}
+.linee{
+    border-bottom: 3px solid black;
+    width: 100%;
+    position: relative;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+}
+
+@media only screen and (min-width: 910px) {
+    /* styles for devices with a minimum screen width of 910px */
+    .mainDiv{
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+    .inputDiv{
+        background-color: aliceblue;
+        width: 30vw;
+        height: fit-content;
+        border-radius: 20px;
+        
+        padding: 5vh;
+        padding-top: 0;
+        padding-bottom: 1vh;
+        /* display: flex; */
+        align-items: baseline;
+        justify-content: center;
+        box-shadow: 1px 2px 9px black;
+        margin-top: 20vh;
+        
+    }
+    .buttons{
+        display: flex;
+    
+    }
+    .butt1{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-left: 25vw; */
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt3{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-left: -4vw; */
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt2{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-right: 25vw; */
+        margin-right: auto;
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt1:hover{
+        background-color: rgb(123, 123, 123);
+        color: white;
+    }
+    .butt2:hover{
+        background-color: rgb(123, 123, 123);
+        color: white;
+    }
+    .butt3:hover{
+        background-color: rgb(33, 239, 167);
+        color: rgb(0, 0, 0);
+    }
+    .heading{
+        font-weight: 800;
+        text-align: center;
+        margin-top: 5vh;
+        position: relative;
+    }
+    .in1{
+        display: flex;
+        margin-bottom: 5px;
+    }
+    .checkout{
+        display: flex;
+        margin-bottom: 5px;
+        /* width: fit-content; */
+        /* block-size: fit-content; */
+        overflow: scroll;
+    }
+    .p1{
+        margin-right: auto;
+        overflow: scroll;
+    }
+    .checkout p{
+        font-size: large;
+        font-weight: 600;
+        overflow: scroll;
+    }
+    .in1 p{
+        font-size: large;
+        margin-right: auto;
+        font-weight: 600;
+    }
+    .in1 input{
+        font-size: larger;
+        border: 0;
+        background-color:aliceblue;
+        border-bottom: 3px solid black;
+        text-align: center;
+        padding: 0;
+    
+    }
+    .in1 select{
+        font-size: 2vh;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        border-radius: 10px;
+    }
+    .linee{
+        border-bottom: 3px solid black;
+        width: 100%;
+        position: relative;
+        align-items: baseline;
+        justify-content: center;
+        text-align: center;
+    }
+    .booked{
+        background-color: aliceblue;
+        background-color: linear-gradient(to right, rgb(253, 184, 184) , rgb(255, 255, 233));
+        width: 30vw;
+        height: fit-content;
+        border-radius: 20px;
+        
+        padding: 5vh;
+        padding-top: 0;
+        padding-bottom: 1vh;
+        /* display: flex; */
+        align-items: baseline;
+        justify-content: center;
+        box-shadow: 1px 2px 9px black;
+        margin-top: 20vh;
+        position: absolute;
+        
+    }
+    .bookHead{
+        font-size: larger;
+        font-weight: 900;
+        text-align: center;
+    }
+    .bookings{
+        display: flex;
+    }
+    .booke{
+        margin-right: auto;
+        font-weight: 800;
+    }
+    .book{
+        border-radius: 10px;
+        align-items: baseline;
+        justify-content: center;
+        /* margin-right: auto; */
+        position: relative;
+        box-shadow: 1px 2px 9px black;
+        padding: 10px;
+    }
+    .book:hover{
+        background-color: rgb(123, 123, 123);
+        color: white;
+        font-weight: 600;
+    }
+    }
+    
+    @media only screen and (max-width: 910px) {
+    /* styles for devices with a maximum screen width of 910px */
+    .inputDiv{
+        background-color: aliceblue;
+        width: 60vw;
+        height: fit-content;
+        border-radius: 20px;
+        
+        padding: 5vh;
+        padding-top: 0;
+        padding-bottom: 1vh;
+        /* display: flex; */
+        align-items: baseline;
+        justify-content: center;
+        box-shadow: 1px 2px 9px black;
+        margin-top: 10vh;
+        
+    }
+    .butt1{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-right: auto; */
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt3{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-left: -4vw; */
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt2{
+        border-radius: 10px;
+        padding: 10px;
+        position: relative;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        /* margin-right: 25vw; */
+        margin-right: auto;
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+    }
+    .butt1:hover{
+        background-color: rgb(123, 123, 123);
+        color: white;
+    }
+    .butt2:hover{
+        background-color: rgb(123, 123, 123);
+        color: white;
+    }
+    .butt3:hover{
+        background-color: rgb(33, 239, 167);
+        color: rgb(0, 0, 0);
+    }
+    .heading{
+        font-weight: 700;
+        text-align: center;
+        margin-top: 5vh;
+        position: relative;
+    }
+    .in1 input{
+        font-size: small;
+        border: 0;
+        background-color:aliceblue;
+        border-bottom: 3px solid black;
+        text-align: center;
+        padding: 0;
+    
+    }
+    .in1 select{
+        font-size: 2vh;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        padding-top: 0vh;
+        padding-bottom: 0vh;
+        border-radius: 10px;
+    }
+    .in1 select option p{
+        /* font-size: 2vh; */
+        padding:0;
+        border-radius: 10px;
+    }
+    }
+.rheading{
+    color: black;
+    font-size: larger;
+    font-weight: 900;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 50%;
+    /* width:fit-content; */
+    /* align-items: center;
+    justify-content: center; */
+}
+.rbutt{
+    border-radius: 10px;
+        padding: 10px;
+        position: absolute;
+        /* margin-bottom: 1vh; */
+        /* margin-right: 25vw; */
+        /* margin-right: auto; */
+        box-shadow: 1px 1px 5px black;
+        font-weight: 900;
+        bottom: 2vh;
+        right: 1vw;
+}
+.rbutt:hover{
+    background-color: rgb(123, 123, 123);
+        color: white;
+}
+.deleteBooking{
+    color: white;
+    background-color: red;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 10px;
+    border-radius: 10px;
+}

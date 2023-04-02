@@ -1,0 +1,16 @@
+.Title{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    /* padding: 1em; */
+    margin-top: -10px;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    /* font-size: ; */
+  }
+  .TitleText{
+    font-size: 3vh;
+    font-weight: 900;
+  }
