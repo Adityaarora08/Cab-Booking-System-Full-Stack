@@ -1,4 +1,4 @@
-# Deployed Site- https://cabook-instantcabservices.netlify.app/
+# Deployed Site- https://cabook-cab-services.netlify.app/
 
 Assignment Submission for Scaler SDE Intern Full-Stack Assignment - Cab System
 
