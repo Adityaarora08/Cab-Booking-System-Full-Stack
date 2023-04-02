@@ -13,6 +13,7 @@ You can choose the pick-up and drop from the locations available with no predefi
 The site gives you the sumary of the trip with estimated cost for the trip inclusive of taxes. 
 To calculate the cost for the trip, the fare of the cab per minute is multiplied with the shortest time it will take to reach from pickup to destination.
 This is calculated using the following algorithm - 
+
 ```
 //Cities and their routes are represented as a graph of key value pair 
 //here graph represents the example given in the assignment
@@ -24,6 +25,8 @@ let graph = {
   E: {C:35, B:20, F:10 },
 	F: {E:10,D:20},
 };
+```
+```
 let shortestDistanceNode = (distances, visited) => {
   // create a default value for shortest
 	let shortest = null;
@@ -43,6 +46,8 @@ let shortestDistanceNode = (distances, visited) => {
 	}
 	return shortest;
 };
+```
+```
 let findShortestPath = (graph, startNode, endNode) => {
   // track distances from the start node using a hash object
     let distances = {};
@@ -87,7 +92,8 @@ let findShortestPath = (graph, startNode, endNode) => {
  // move to the nearest neighbor node
        node = shortestDistanceNode(distances, visited);
      }
-   
+   ```
+   ```
   // using the stored paths from start node to end node
   // record the shortest path
   let shortestPath = [endNode];
@@ -106,11 +112,14 @@ let findShortestPath = (graph, startNode, endNode) => {
   // return the shortest path & the end node's distance from the start node
     return results;
  };
+ ```
+ ```
 // console.log(findShortestPath(graph,pickup,drop).distance);
 const distance=findShortestPath(graph,pickup,drop).distance;
 const total=(distance*valuee);
 const taxes=(total*18)/100;
 ```
+
 On confirmation, a confirmation mail is sent to the user email by using the SMTP protocol with elastic mail as host.
 <img width="1113" alt="Screenshot 2023-04-02 at 6 20 31 PM" src="https://user-images.githubusercontent.com/79107244/229355691-9bbef6da-94ce-4641-b546-b18c8a2f515f.png">
 
