@@ -129,9 +129,11 @@ On confirmation, a confirmation mail is sent to the user email by using the SMTP
     window.Email.send(config).then(()=> toast.success("Confirmation and details sent on mail(check spam folder if not recieved) :)") );
   }
 ```
+
 Then the booking details are also sent to the firebase realtime database which are to be printed in the bookings screen. 
 <img width="1440" alt="Screenshot 2023-04-02 at 6 50 15 PM" src="https://user-images.githubusercontent.com/79107244/229355562-0e53627a-6c35-45bd-af48-76014f27dc8d.png">
 Also I've set the value of the cab in the options array to be 0 to filter it out while booking another cab and show it as booked.
+
 ```
  options[6-valuee].value=0;
   setOptions(options);
