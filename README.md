@@ -1,72 +1,167 @@
-# Getting Started with Create React App
+# Deployed Site- https://cabookcabservicess.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Assignment Submission for Scaler SDE Intern Full-Stack Assignment - Cab System
+Frontend is build in React JS with backend using Firebase
+The website is deployed using netlify.
 
+Project Description- 
+The site lets you book cabs form one location to another and calculates the shortest distance between two places using the best route possible and sends confirmation email on successful booking. 
+You can choose the pick-up and drop from the locations available with no predefined routes. 
+<img width="1440" alt="Screenshot 2023-04-02 at 6 18 54 PM" src="https://user-images.githubusercontent.com/79107244/229354872-a87d775d-751e-4ba2-8bf5-829407e4cc2e.png">
+
+The site gives you the sumary of the trip with estimated cost for the trip inclusive of taxes. 
+To calculate the cost for the trip, the fare of the cab per minute is multiplied with the shortest time it will take to reach from pickup to destination.
+This is calculated using the following algorithm - 
+```
+//Cities and their routes are represented as a graph of key value pair 
+//here graph represents the example given in the assignment
+let graph = {
+	A: { B: 5, C: 7 },
+	B: { A: 5, E: 20, D:15 },
+	C: { A:7, D: 5, E: 35 },
+	D: { B: 15,C:5,F:20 },
+  E: {C:35, B:20, F:10 },
+	F: {E:10,D:20},
+};
+let shortestDistanceNode = (distances, visited) => {
+  // create a default value for shortest
+	let shortest = null;
+	
+  // for each node in the distances object
+	for (let node in distances) {
+    	// if no node has been assigned to shortest yet
+  		// or if the current node's distance is smaller than the current shortest
+		let currentIsShortest =
+			shortest === null || distances[node] < distances[shortest];
+        	
+	  	// and if the current node is in the unvisited set
+		if (currentIsShortest && !visited.includes(node)) {
+            // update shortest to be the current node
+			shortest = node;
+		}
+	}
+	return shortest;
+};
+let findShortestPath = (graph, startNode, endNode) => {
+  // track distances from the start node using a hash object
+    let distances = {};
+  distances[endNode] = "Infinity";
+  distances = Object.assign(distances, graph[startNode]);
+ // track paths using a hash object
+  let parents = { endNode: null };
+  for (let child in graph[startNode]) {
+   parents[child] = startNode;
+  }
+    let visited = [];
+ // find the nearest node
+    let node = shortestDistanceNode(distances, visited);
+  
+  // for that node:
+  while (node) {
+  // find its distance from the start node & its child nodes
+   let distance = distances[node];
+   let children = graph[node]; 
+       
+  // for each of those child nodes:
+       for (let child in children) {
+   
+   // make sure each child node is not the start node
+         if (String(child) === String(startNode)) {
+           continue;
+        } else {
+           // save the distance from the start node to the child node
+           let newdistance = distance + children[child];
+ // if there's no recorded distance from the start node to the child node in the distances object
+ // or if the recorded distance is shorter than the previously stored distance from the start node to the child node
+           if (!distances[child] || distances[child] > newdistance) {
+ // save the distance to the object
+      distances[child] = newdistance;
+ // record the path
+      parents[child] = node;
+     } 
+          }
+        }  
+       // move the current node to the visited set
+       visited.push(node);
+ // move to the nearest neighbor node
+       node = shortestDistanceNode(distances, visited);
+     }
+   
+  // using the stored paths from start node to end node
+  // record the shortest path
+  let shortestPath = [endNode];
+  let parent = parents[endNode];
+  while (parent) {
+   shortestPath.push(parent);
+   parent = parents[parent];
+  }
+  shortestPath.reverse();
+   
+  //this is the shortest path
+  let results = {
+   distance: distances[endNode],
+   path: shortestPath,
+  };
+  // return the shortest path & the end node's distance from the start node
+    return results;
+ };
+// console.log(findShortestPath(graph,pickup,drop).distance);
+const distance=findShortestPath(graph,pickup,drop).distance;
+const total=(distance*valuee);
+const taxes=(total*18)/100;
+```
+On confirmation, a confirmation mail is sent to the user email by using the SMTP protocol with elastic mail as host.
+<img width="1113" alt="Screenshot 2023-04-02 at 6 20 31 PM" src="https://user-images.githubusercontent.com/79107244/229355691-9bbef6da-94ce-4641-b546-b18c8a2f515f.png">
+
+```
+ const config = {
+    Username: 'cabookcabservices@gmail.com',
+    Password: '803B33D28D91A8CBCFE5E90A0D2AAB5063FE',
+    Host: 'smtp.elasticemail.com',
+    Port: 2525,
+    To : `${email}`,
+    From : "cabookcabservices@gmail.com",
+    Subject : "Ride Confirmed ! We are very excited to ride with you !",
+    Body : `Thankyou for using Cabook. Trip confirmed .\nEstimated time taken for the trip: ${distance}minutes.\nAmount to be paid: $ ${total+taxes}.\n Happy journey !`
+  }
+  if(window.Email){
+    window.Email.send(config).then(()=> toast.success("Confirmation and details sent on mail(check spam folder if not recieved) :)") );
+  }
+```
+Then the booking details are also sent to the firebase realtime database which are to be printed in the bookings screen. 
+<img width="1440" alt="Screenshot 2023-04-02 at 6 50 15 PM" src="https://user-images.githubusercontent.com/79107244/229355562-0e53627a-6c35-45bd-af48-76014f27dc8d.png">
+Also I've set the value of the cab in the options array to be 0 to filter it out while booking another cab and show it as booked.
+```
+ options[6-valuee].value=0;
+  setOptions(options);
+  setBoth(false);
+  const date = new Date();
+    bookedCab.bookingTime=date.getHours() 
+    + ':' + date.getMinutes() 
+    + ":" + date.getSeconds();
+    bookedCab.freeTime=distance;
+  const {amount,label,bookingTime,freeTime,value} = bookedCab;
+  bookedCab.value=valuee;
+  //add to database
+  fireDb.child("bookings").push(bookedCab,(err)=>{
+    if(err){
+      toast.error("Not confirmed, try again");
+    }else{
+      toast.success("Booking successful !")
+      // alert(" ");
+    }
+  }); 
+```
+The user can also delete their booking by clicking on the delete button with the bookings.Then the cab will be again available to be booked.
+<img width="1440" alt="Screenshot 2023-04-02 at 6 19 43 PM" src="https://user-images.githubusercontent.com/79107244/229355665-157c0632-acaa-47bf-a1eb-42924263fffb.png">
+The cabs will automatically be available after their trips which is implemented by timeout function as distances were given in minutes.
+The user can also book another cab from the other four options if one is already booked by them.
+
+The website is also made responsive using basic media queries.
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Cab-Booking-System-Full-Stack
 # Cab-Booking-System-Full-Stack
