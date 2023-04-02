@@ -7,8 +7,9 @@ The website is deployed using netlify.
 Project Description- 
 The site lets you book cabs form one location to another and calculates the shortest distance between two places using the best route possible and sends confirmation email on successful booking. 
 You can choose the pick-up and drop from the locations available with no predefined routes. 
-<img width="1440" alt="Screenshot 2023-04-02 at 6 18 54 PM" src="https://user-images.githubusercontent.com/79107244/229354872-a87d775d-751e-4ba2-8bf5-829407e4cc2e.png">
 
+<img width="1440" alt="Screenshot 2023-04-02 at 6 18 54 PM" src="https://user-images.githubusercontent.com/79107244/229354872-a87d775d-751e-4ba2-8bf5-829407e4cc2e.png">
+<img width="1440" alt="Screenshot 2023-04-02 at 7 54 30 PM" src="https://user-images.githubusercontent.com/79107244/229358995-949f7553-000b-4be5-b72b-ef28a2016e3f.png">
 The site gives you the sumary of the trip with estimated cost for the trip inclusive of taxes. 
 To calculate the cost for the trip, the fare of the cab per minute is multiplied with the shortest time it will take to reach from pickup to destination.
 This is calculated using the following algorithm - 
